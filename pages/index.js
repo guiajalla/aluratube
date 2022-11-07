@@ -55,7 +55,7 @@ const StyledHeader = styled.div`
         }
 
         .banner {
-            height: 250px;
+            height: 325px;
             width: 100%;
         }
   `;
