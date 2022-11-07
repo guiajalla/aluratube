@@ -40,27 +40,32 @@ export default HomePage
 // }
 
 const StyledHeader = styled.div`
-        img {
+        .perfil {
             width: 80px;
             height: 80px;
             border-radius: 50%;
         }
 
         .user-info {
-            margin-top: 50px;
             display: flex;
             align-items: center;
             width: 100%;
             padding: 16px 32px;
             gap: 16px;
         }
+
+        .banner {
+            height: 250px;
+            width: 100%;
+        }
   `;
+
 function Header() {
     return (
         <StyledHeader>
-            {/* <img src='banner' /> */}
+            <img src={config.banner} className="banner"/>
             <section className="user-info">
-                <img src={`https://github.com/${config.github}.png`} />
+                <img src={`https://github.com/${config.github}.png`} className="perfil"/>
                 <div>
                     <h2>
                         {config.name}
@@ -83,7 +88,7 @@ function Timeline(props) {
         <StyledTimeline>
             {playlistNames.map((playlistName) => {
                 const videos = props.playlists[playlistName];
-                console.log(videos);
+                // console.log(videos);
                 return (
                     <section>
                         <h2>{playlistName}</h2>
