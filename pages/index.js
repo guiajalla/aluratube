@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { CSSReset } from "../src/components/CSSReset";
 import Menu from "../src/components/Menu";
 import { StyledTimeline } from "../src/components/Timeline.js";
+import { StyledFavorites } from "../src/components/Favorites";
 
 function HomePage() {
     const styleHomePage = { 
@@ -24,6 +25,7 @@ function HomePage() {
                 <Timeline playlists={config.playlists}>
                     Conteúdo
                 </Timeline>
+                <Favorites favorites={config.favorites}/>
             </div>
         </>        
     );
@@ -108,5 +110,35 @@ function Timeline(props) {
                 )
             })}
         </StyledTimeline>
+    );
+}
+
+function Favorites(props){
+    const favoritesList = Object.keys(props.favorites);
+    console.log("Dentro do componente", props.favorites);
+    return (
+        <StyledFavorites>
+            {favoritesList.map((favorite) => {
+                const channels = props.favorites[favorite]
+                return (
+                    <section>
+                        <h2>{favorite}</h2>
+                        <div>
+                            {channels.map((channel) => {
+                                return (
+                                    <a href={channel.url}>
+                                        <img src={channel.img} />
+                                        <span>
+                                            {channel.user}
+                                        </span>
+                                    </a>
+                                )
+                            })
+                            }
+                        </div>
+                    </section>
+                )
+            })}
+        </StyledFavorites>
     );
 }

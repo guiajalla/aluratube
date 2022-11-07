@@ -1,8 +1,27 @@
 {
     "name": "Guilherme Ajalla",
-    "job": "Software Engineer",
+    "job": "Software Engineer Jr.",
     "github": "guiajalla",
-    "banner": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+    "banner": "https://images.unsplash.com/photo-1511140973288-19bf21d7e771?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+    "favorites": {
+        "Canais Recomendados": [
+            {
+                "user": "Natty Hills",
+                "img": "https://yt3.ggpht.com/ytc/AMLnZu9gjs0FV1K2JczWAE_tiuH5jrk4YmfNj9BT91FjsA=s88-c-k-c0x00ffffff-no-rj",
+                "url": "https://www.youtube.com/user/heyreinaldo"
+            },
+            {
+                "user": "LubaTV",
+                "img": "https://yt3.ggpht.com/PI-b8U_XG0G54Sny37QcxSzmLq5j2dAVJSHGxb0YHlB7uDPBfXDjdIBuggD-bgExLtd8ToZvNQ=s88-c-k-c0x00ffffff-no-rj",
+                "url": "https://www.youtube.com/c/LubatvBr"
+            },
+            {
+                "user": "Alura Cursos Online",
+                "img": "https://yt3.ggpht.com/xqhIoXspeX7eqouJvNHl1xqpv9213Pl26ENZbuouXxO2RlDadjsveNXfgnj8GTUk7thFYUkVRg=s88-c-k-c0x00ffffff-no-rj",
+                "url": "https://www.youtube.com/c/Alura"
+            }
+        ]
+    },
     "playlists": {
         "LGBTQIAP+": [
             {
