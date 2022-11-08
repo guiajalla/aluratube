@@ -7,7 +7,7 @@ import { StyledTimeline } from "../src/components/Timeline.js";
 import { StyledFavorites } from "../src/components/Favorites";
 
 function HomePage() {
-    const styleHomePage = { 
+    const styleHomePage = {
         // backgroundColor: "red" 
     };
     // console.log(config.playlists)
@@ -27,9 +27,9 @@ function HomePage() {
                 <Timeline searchValue={valorDoFiltro} playlists={config.playlists}>
                     Conteúdo
                 </Timeline>
-                <Favorites favorites={config.favorites}/>
+                <Favorites favorites={config.favorites} />
             </div>
-        </>        
+        </>
     );
 }
 
@@ -57,19 +57,20 @@ const StyledHeader = styled.div`
             padding: 16px 32px;
             gap: 16px;
         }
-
-        .banner {
-            height: 325px;
-            width: 100%;
-        }
+  `;
+  const StyledBanner = styled.div`
+        background-color: yellow;
+        background-image: url(${({ bg }) => bg});
+        height: 230px;
+        background-size: 100%;
   `;
 
 function Header() {
     return (
         <StyledHeader>
-            <img src={config.banner} className="banner"/>
+            <StyledBanner bg={config.bg}/>
             <section className="user-info">
-                <img src={`https://github.com/${config.github}.png`} className="perfil"/>
+                <img src={`https://github.com/${config.github}.png`} className="perfil" />
                 <div>
                     <h2>
                         {config.name}
@@ -83,7 +84,7 @@ function Header() {
     );
 }
 
-function Timeline({ searchValue, ...props}) {
+function Timeline({ searchValue, ...props }) {
     // console.log("Dentro do componente", props.playlists);
     const playlistNames = Object.keys(props.playlists);
     //Statement
@@ -97,22 +98,22 @@ function Timeline({ searchValue, ...props}) {
                     <section key={playlistName}>
                         <h2>{playlistName}</h2>
                         <div>
-                        {videos
-                            .filter((video) => {
-                                const titleNormalized = video.title.toLowerCase();
-                                const searchValueNormalized = searchValue.toLowerCase();
-                                return titleNormalized.includes(searchValueNormalized)
-                            })
-                            .map((video) => {
-                                return (
-                                    <a key={video.url} href={video.url}>
-                                        <img src={video.thumb} />
-                                        <span>
-                                            {video.title}
-                                        </span>
-                                    </a>
-                                )
-                            })}
+                            {videos
+                                .filter((video) => {
+                                    const titleNormalized = video.title.toLowerCase();
+                                    const searchValueNormalized = searchValue.toLowerCase();
+                                    return titleNormalized.includes(searchValueNormalized)
+                                })
+                                .map((video) => {
+                                    return (
+                                        <a key={video.url} href={video.url}>
+                                            <img src={video.thumb} />
+                                            <span>
+                                                {video.title}
+                                            </span>
+                                        </a>
+                                    )
+                                })}
                         </div>
                     </section>
                 )
@@ -121,20 +122,20 @@ function Timeline({ searchValue, ...props}) {
     );
 }
 
-function Favorites(props){
+function Favorites(props) {
     const favoritesList = Object.keys(props.favorites);
-    console.log("Dentro do componente", props.favorites);
+    // console.log("Dentro do componente", props.favorites);
     return (
         <StyledFavorites>
             {favoritesList.map((favorite) => {
                 const channels = props.favorites[favorite]
                 return (
-                    <section>
+                    <section key={favorite}>
                         <h2>{favorite}</h2>
                         <div>
                             {channels.map((channel) => {
                                 return (
-                                    <a href={channel.url}>
+                                    <a key={channel.url} href={channel.url}>
                                         <img src={channel.img} />
                                         <span>
                                             {channel.user}
