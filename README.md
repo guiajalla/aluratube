@@ -1,6 +1,9 @@
 # AluraTube
 <div stye="display:flex; flex-direction: row">
   <img src="https://img.shields.io/badge/guiajalla-AluraTube-red" />
+  <a href="https://www.linkedin.com/in/guilherme-ajalla/">
+    <img src="https://img.shields.io/badge/-Linkedin-blue" />
+  </a>
 </div>
 
 Projeto desenvolvido junto a Alura durante a Imersão Dev React 5
