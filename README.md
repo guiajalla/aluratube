@@ -6,7 +6,7 @@ Projeto desenvolvido junto a Alura durante a Imersão Dev React 5
 | -------------  | --- |
 | :sparkles: Nome        | **AluraTube**
 | :label: Tecnologias | ReactJS, NextJs
-| :rocket: URL         | aluratube-red-mu.vercel.app
+| :rocket: URL         | https://aluratube-red-mu.vercel.app
 
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
 <!-- ![](https://via.placeholder.com/1200x500.png?text=imagem+lindona+do+meu+projeto#vitrinedev -->
