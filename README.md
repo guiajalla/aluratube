@@ -2,6 +2,7 @@
 
 Projeto desenvolvido junto a Alura durante a Imersão Dev React 5
 
+| :placard: Por |  Guilherme Ajalla   |
 | -------------  | --- |
 | :sparkles: Nome        | **AluraTube**
 | :label: Tecnologias | ReactJS, NextJs
