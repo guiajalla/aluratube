@@ -1,8 +1,7 @@
 # AluraTube
 
-Rápida descrição do objetivo de fazer esse projeto
+Projeto desenvolvido junto a Alura durante a Imersão Dev React 5
 
-| :placard: Vitrine.Dev |     |
 | -------------  | --- |
 | :sparkles: Nome        | **AluraTube**
 | :label: Tecnologias | ReactJS, NextJs
