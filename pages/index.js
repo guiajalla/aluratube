@@ -7,14 +7,9 @@ import { StyledTimeline } from "../src/components/Timeline.js";
 import { StyledFavorites } from "../src/components/Favorites";
 
 function HomePage() {
-    const styleHomePage = {
-        // backgroundColor: "red" 
-    };
-    // console.log(config.playlists)
     const [valorDoFiltro, setValorDoFiltro] = React.useState("");
     return (
         <>
-            <CSSReset />
             <div style={{
                 display: "flex",
                 flexDirection: "column",
@@ -44,6 +39,8 @@ export default HomePage
 // }
 
 const StyledHeader = styled.div`
+        background-color: ${({ theme }) => theme.backgroundLevel1};
+
         .perfil {
             width: 80px;
             height: 80px;
@@ -58,7 +55,7 @@ const StyledHeader = styled.div`
             gap: 16px;
         }
   `;
-  const StyledBanner = styled.div`
+const StyledBanner = styled.div`
         background-color: yellow;
         background-image: url(${({ bg }) => bg});
         height: 230px;
@@ -68,7 +65,7 @@ const StyledHeader = styled.div`
 function Header() {
     return (
         <StyledHeader>
-            <StyledBanner bg={config.bg}/>
+            <StyledBanner bg={config.bg} />
             <section className="user-info">
                 <img src={`https://github.com/${config.github}.png`} className="perfil" />
                 <div>
