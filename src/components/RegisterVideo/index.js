@@ -1,8 +1,11 @@
 import React from "react";
 import { StyledRegisterVideo } from "./style";
+import { createClient } from '@supabase/supabase-js'
 
 function useForm(propsDoForm) { //Hook customizado para lidar com o formulario
     const [values, setValues] = React.useState(propsDoForm.initialValues);
+
+    console.log();
 
     return {
         values,
@@ -21,9 +24,17 @@ function useForm(propsDoForm) { //Hook customizado para lidar com o formulario
     };
 }
 
+const PROJECT_URL = 'https://mdxmjjkyarvpkaebwdcj.supabase.co';
+const PUBLIC_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1keG1qamt5YXJ2cGthZWJ3ZGNqIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjgzNjQ4NTUsImV4cCI6MTk4Mzk0MDg1NX0.xi8zJVLuqXhsbuPuc14hP09p-pqwdHmSlb8BSKrLCWs';
+const supabase = createClient(PROJECT_URL, PUBLIC_KEY);
+
+function getThumbnail(url) {
+    return `https://img.youtube.com/vi/${url.split("v=")[1]}/hqdefault.jpg`;
+}
+
 export default function RegisterVideo() {
     const formCadastro = useForm({
-        initialValues: { titulo: "Frost punk", url: "https://youtube.." }
+        initialValues: { titulo: "Sasha Velour - So emotional / Lemon Lab / Chile", url: "https://www.youtube.com/watch?v=rA3Drk02QxY" }
     });
     const [formVisivel, setFormVisivel] = React.useState(false);
     return (
@@ -37,7 +48,21 @@ export default function RegisterVideo() {
                 ?
                 (<form onSubmit={(evento) => {
                     evento.preventDefault();
-                    // console.log(formCadastro.values);
+                    console.log(formCadastro.values);
+
+                    // Contrato entre o nosso Front e o BackEnd
+                    supabase.from("video").insert({
+                        title: formCadastro.values.titulo,
+                        url: formCadastro.values.url,
+                        thumb: getThumbnail(formCadastro.values.url),
+                        playlist: "LGBTQIAP+",
+                     })
+                     .then((oqueveio) => {
+                        console.log(oqueveio);
+                     })
+                     .catch((err) => {
+                        console.log(err);
+                     })
 
                     setFormVisivel(false);
                     formCadastro.clearForm();

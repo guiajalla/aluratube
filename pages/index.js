@@ -1,13 +1,35 @@
 import React from "react";
 import config from "../config.json";
 import styled from "styled-components";
-import { CSSReset } from "../src/components/CSSReset";
 import Menu from "../src/components/Menu";
 import { StyledTimeline } from "../src/components/Timeline.js";
 import { StyledFavorites } from "../src/components/Favorites";
+import { videoService } from "../src/services/videoService";
 
 function HomePage() {
+    const service = videoService();
     const [valorDoFiltro, setValorDoFiltro] = React.useState("");
+    const [playlists, setPlaylists] = React.useState({});     // config.playlists
+
+    React.useEffect(() => {
+        console.log("useEffect");
+        service
+            .getAllVideos()
+            .then((dados) => {
+                console.log(dados.data);
+                // Forma imutavel
+                const novasPlaylists = {};
+                dados.data?.forEach((video) => {
+                    if (!novasPlaylists[video.playlist]) novasPlaylists[video.playlist] = [];
+                    novasPlaylists[video.playlist] = [
+                        video,
+                        ...novasPlaylists[video.playlist],
+                    ];
+                });
+                // console.log(novasPlaylists);
+                setPlaylists(novasPlaylists);
+            });
+    }, []);
     return (
         <>
             <div style={{
@@ -19,7 +41,7 @@ function HomePage() {
                 {/* Prop Drilling */}
                 <Menu valorDoFiltro={valorDoFiltro} setValorDoFiltro={setValorDoFiltro} />
                 <Header />
-                <Timeline searchValue={valorDoFiltro} playlists={config.playlists}>
+                <Timeline searchValue={valorDoFiltro} playlists={playlists}>
                     Conteúdo
                 </Timeline>
                 <Favorites favorites={config.favorites} />
@@ -97,7 +119,8 @@ function Timeline({ searchValue, ...props }) {
                         <div>
                             {videos
                                 .filter((video) => {
-                                    const titleNormalized = video.title.toLowerCase();
+                                    console.log(video)
+                                    const titleNormalized = video.title.toLowerCase() || "";
                                     const searchValueNormalized = searchValue.toLowerCase();
                                     return titleNormalized.includes(searchValueNormalized)
                                 })
